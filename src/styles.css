@@ -113,12 +113,14 @@ h1 {
 .inputPoint {
   background-color: white;
   border-radius: 0.5rem;
-  margin: 0.5rem;
+
   padding: 0.3rem;
   padding-top: 0.5rem;
 
   width: 8rem;
   text-align: left;
+  display: block;
+  margin: 1rem auto;
 }
 
 .inputPoint input {
@@ -200,5 +202,3 @@ h1 {
     padding: 2rem;
   }
 }
-
-
