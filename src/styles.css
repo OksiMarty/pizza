@@ -151,6 +151,12 @@ h1 {
 .labelBoxItemSecond {
   flex: 1;
   color: #ef6149;
+  transition: all 0.1s ease-in-out;
+}
+
+.labelBoxItemSecond:hover {
+  cursor: pointer;
+  color: black;
 }
 
 .buttonMad {
