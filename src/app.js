@@ -118,14 +118,17 @@ function showStory(values) {
   secondaryWrapper.innerHTML = "";
 
   let newParagraph = document.createElement("p");
+  newParagraph.setAttribute("style", "font-size: 2rem");
+  newParagraph.style.media = "(max-width:642px)";
+  newParagraph.style.fontSize = "1rem";
 
   newParagraph.innerHTML =
     "Pizza was invented by <span>adjective</span> <span>nationality</span> chef named <span>person</span>. To make a pizza you need to take a lump of <span>noun</span>, and make a thin, round <span>adjective</span> <span>noun</span>. Then you cover it with <span>adjective</span> sauce, <span>adjective</span> cheese, and fresh chopped <span>plural noun</span>. Next you need to bake it in a very hot <span>noun</span>. When it is done, cut it into <span>number</span> <span>shapes</span>. Some kids like <span>food</span> pizza the best, but my favourite is <span>food</span>. If I could, I would eat pizza <span>number</span> times a day!";
   newParagraph.style.backgroundColor = "white";
-  newParagraph.style.textAlign = "center";
+  newParagraph.style.textAlign = "justify";
   newParagraph.style.padding = "2rem";
   newParagraph.style.color = "rgb(238, 77, 48)";
-  newParagraph.style.fontSize = "2rem";
+  //newParagraph.style.fontSize = "2rem";
   newParagraph.style.borderRadius = "1rem";
 
   secondaryWrapper.appendChild(newParagraph);
@@ -159,6 +162,13 @@ function showStory(values) {
   });
   secondaryWrapper.appendChild(goMadAgainButton);
 }
+
+/*let styleElement = document.createElement("style");
+styleElement.textContent =
+  "@media (max-width: 642px) {.newParagraph {text-align: justify;}}";
+
+document.head.appendChild(styleElement);*/
+
 let input1 = document.getElementById("1");
 let button1 = document.getElementById("button1");
 button1.addEventListener("click", showRandom1);
