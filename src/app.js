@@ -1,116 +1,25 @@
-let vulgarList = [
-  "fuck",
-  "fuck you",
-  "fuck off",
-  "shit",
-  "piss off",
-  "dick head",
-  "asshole",
-  "son of a bitch",
-  "bastard",
-  "bitch",
-  "damn",
-  "cunt",
-];
-let myRandom = {
-  adjective: [
-    "bright",
-    "sweet",
-    "brave",
-    "cute",
-    "funny",
-    "sneaky",
-    "stupid",
-    "awesome",
-  ],
-  nationality: [
-    "Greek",
-    "Ukrainian",
-    "Polish",
-    "Turkish",
-    "Brazilian",
-    "Spanish",
-    "Egyptian",
-    "Japanese",
-  ],
-  person: [
-    "Daemon",
-    "Potter",
-    "Gaga",
-    "Buddha",
-    "Santa",
-    "Biden",
-    "Mickey",
-    "Rachel",
-  ],
-  noun: [
-    "doll",
-    "cat",
-    "house",
-    "book",
-    "plane",
-    "ticket",
-    "concert",
-    "flower",
-  ],
-  pluralNoun: [
-    "tables",
-    "lamps",
-    "carpets",
-    "cars",
-    "trees",
-    "theatres",
-    "toys",
-    "benches",
-  ],
-  _number: ["2", "500", "100", "20", "1000000", "1000", "50", "30"],
-  shapes: [
-    "starts",
-    "squares",
-    "circles",
-    "diamonds",
-    "rectangles",
-    "ovals",
-    "zigzags",
-    "hearts",
-  ],
-  food: [
-    "octopus",
-    "strawberry",
-    "broccoli",
-    "carrot",
-    "ice-cream",
-    "bubble-gum",
-    "jam",
-    "cherry",
-  ],
-};
-let buttonMad = document.getElementById("buttonMad");
+let inputElements = document.getElementsByTagName("input");
+
+const buttonMad = document.getElementById("buttonMad");
 buttonMad.addEventListener("click", goMad);
-let inputValues = [];
 
 function goMad(event) {
   event.preventDefault();
-
-  let inputElements = document.getElementsByTagName("input");
-  let inputPromises = [];
-
-  for (var i = 0; i < inputElements.length; i++) {
-    let currentInput = inputElements[i];
-    let elementValue = currentInput.value;
-
+let inputPromises = [];
+  for (const element of inputElements) {
+    let elementValue = element.value;
     if (elementValue) {
-      for (var j = 0; j < vulgarList.length; j++) {
-        if (elementValue.toLowerCase().trim() == vulgarList[j]) {
-          currentInput.value = "";
+      for (const vulgar of vulgarList) {
+        if (elementValue.toLowerCase().trim() == vulgar) {
+          element.value = "";
 
-          currentInput.setAttribute("placeholder", "No vulgar!");
+          element.setAttribute("placeholder", "No vulgar!");
           break;
         }
       }
       inputPromises.push(Promise.resolve(elementValue));
     } else {
-      inputElements[i].setAttribute("placeholder", "Word!");
+      element.setAttribute("placeholder", "Word!");
       inputPromises.push(Promise.reject());
     }
   }
@@ -169,19 +78,22 @@ function showStory(values) {
 }
 
 for (let i = 1; i < 16; i++) {
-  let x = document.getElementById(`button${i}`);
-  let y = showRandom(i);
+  let buttonClicked = document.getElementById(`button${i}`);
+  let showRandomResult = showRandom(i);
 
-  x.addEventListener("click", y);
+  buttonClicked.addEventListener("click", showRandomResult);
 }
 
 function showRandom(i) {
   let input = document.getElementById(i);
   return function (event) {
     event.preventDefault();
-    let z = input.classList.toString();
+    let inputValue = input.classList.toString();
 
-    input.value = myRandom[z][Math.floor(Math.random() * myRandom[z].length)];
+    input.value =
+      myRandom[inputValue][
+        Math.floor(Math.random() * myRandom[inputValue].length)
+      ];
   };
 }
 
