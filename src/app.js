@@ -5,7 +5,7 @@ buttonMad.addEventListener("click", goMad);
 
 function goMad(event) {
   event.preventDefault();
-let inputPromises = [];
+  let inputPromises = [];
   for (const element of inputElements) {
     let elementValue = element.value;
     if (elementValue) {
@@ -74,6 +74,9 @@ function showStory(values) {
     h.backgroundColor = "rgb(119, 197, 35)";
     h.color = "";
   });
+  goMadAgainButton.addEventListener("click", () => {
+    location.reload();
+  });
   secondaryWrapper.appendChild(goMadAgainButton);
 }
 
@@ -107,3 +110,5 @@ function showRandomAll(event) {
     showRandom(i)(event);
   }
 }
+
+//let randverb1 = Math.trunc(Math.random()*verbs.length)
